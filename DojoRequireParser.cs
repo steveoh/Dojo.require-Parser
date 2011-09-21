@@ -23,10 +23,10 @@ namespace DojoRequireParser
             var savePath = GetSavePath();
 #endif
 
+#if DEBUG
             var path = @"some hard coded path";
             var savePath = @"some other hard coded path";
 
-#if DEBUG
             Stopwatch sw = Stopwatch.StartNew();
 #endif
 
