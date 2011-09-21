@@ -23,8 +23,8 @@ namespace DojoRequireParser
             var savePath = GetSavePath();
 #endif
 
-            var path = @"C:\inetpub\wwwroot\UDAF_FRESH";
-            var savePath = @"C:\inetpub\wwwroot\UDAF_FRESH\UDAF\Content\_build";
+            var path = @"some hard coded path";
+            var savePath = @"some other hard coded path";
 
 #if DEBUG
             Stopwatch sw = Stopwatch.StartNew();
