@@ -18,14 +18,14 @@ namespace DojoRequireParser
             Console.WriteLine("dojo.require parser for MVC 2.0");
             Console.WriteLine("Created by Steve Gourley : AGRC" + Environment.NewLine + Environment.NewLine);
 
-#if !DEBUG
+#if DEBUG
             var path = GetProjectPath();
             var savePath = GetSavePath();
 #endif
 
-#if DEBUG
-            var path = @"some hard coded path";
-            var savePath = @"some other hard coded path";
+#if !DEBUG
+            var path = @"some path";
+            var savePath = @"some path";
 
             Stopwatch sw = Stopwatch.StartNew();
 #endif
@@ -78,6 +78,7 @@ namespace DojoRequireParser
         private static void BuildDictionaryOfRequires(Regex exp, Dictionary<string, string> dictionary, DirectoryInfo dir)
         {
             foreach (var item in dir.EnumerateFiles("*.*", SearchOption.AllDirectories).
+                                     Where(x => !x.DirectoryName.ToLower().Contains("obj")).
                                      Where(x => x.Extension == ".aspx" || x.Extension == ".ascx"))
             {
                 var text = File.ReadAllText(item.FullName);
@@ -93,6 +94,8 @@ namespace DojoRequireParser
                     }
                     else
                     {
+                        Console.WriteLine(string.Format("Adding: {0} from {1}", matchValue, item.FullName));
+                        Console.ReadKey();
                         dictionary.Add(matchValue, item.Name);
                     }
                 }
