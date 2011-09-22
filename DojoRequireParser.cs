@@ -18,14 +18,14 @@ namespace DojoRequireParser
             Console.WriteLine("dojo.require parser for MVC 2.0");
             Console.WriteLine("Created by Steve Gourley : AGRC" + Environment.NewLine + Environment.NewLine);
 
-#if DEBUG
+#if !DEBUG
             var path = GetProjectPath();
             var savePath = GetSavePath();
 #endif
 
-#if !DEBUG
-            var path = @"some path";
-            var savePath = @"some path";
+#if DEBUG
+            var path = @"C:\inetpub\wwwroot\UDAF_FRESH";
+            var savePath = @"C:\inetpub\wwwroot\UDAF_FRESH\UDAF\Content\core";
 
             Stopwatch sw = Stopwatch.StartNew();
 #endif
@@ -94,8 +94,6 @@ namespace DojoRequireParser
                     }
                     else
                     {
-                        Console.WriteLine(string.Format("Adding: {0} from {1}", matchValue, item.FullName));
-                        Console.ReadKey();
                         dictionary.Add(matchValue, item.Name);
                     }
                 }
